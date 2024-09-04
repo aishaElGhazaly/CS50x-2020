@@ -1,0 +1,535 @@
+@viewport {
+    width: device-width ;
+    zoom: 1.0 ;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+    background-color: #fdfcfa;
+}
+
+.body-container {
+    min-height: 100%;
+}
+
+.navbar{
+    height: auto;
+    width: auto;
+    background-color: #1c2120;
+}
+
+.navbar a{
+    color: #FBFBFB;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+    margin: auto;
+    font-size: 3.5em;
+    font-family: fantasy;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.container-ish {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 40%;
+    text-align: center;
+}
+
+.note {
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+.container-ish p{
+    width: 100%;
+    font-family: fantasy;
+    font-weight: lighter;
+    font-size: 0.85em;
+    text-align: left;
+}
+
+.record {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.record img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid gray;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.record #under {
+    float: left;
+    padding-left: 90px;
+}
+
+.record .text{
+    position: relative;
+    font-family: fantasy;
+}
+
+.record .text h2, h3, h4 {
+    color: #6b6b6b;
+}
+
+.record .text h1 {
+    font-size: 2.5em;
+}
+
+.record .text h2 {
+    font-size: 1.15em;
+    padding-bottom: 15px;
+}
+
+.record .text h3 {
+    font-size: 0.9em;
+}
+
+.record .text h4 {
+    font-size: 0.8em;
+}
+
+table {
+    width: 110%;
+    text-align: left;
+}
+
+td {
+    font-family: fantasy;
+    font-size: 1.18em;
+    padding-bottom: 20px;
+}
+
+#footnote {
+    padding-top: 10px;
+}
+
+.no, .duration {
+    font-size: 1em;
+    color: #262626;
+}
+
+.links{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.links img{
+    all: unset;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+
+.modal-container {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+}
+
+.modal {
+    background-color: whitesmoke;
+    width: 35%;
+    height: 90%;
+    padding: 20px 40px;
+    box-shadow: 5px 5px 5px gray;
+    border-radius: 10px;
+}
+
+.modal span {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -15px;
+    cursor: pointer;
+}
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+    display: none;
+}
+
+.custom-modal {
+    background-color: whitesmoke;
+    width: 40%;
+    height: 85%;
+    margin: 5% auto;
+    padding: 20px 40px;
+    box-shadow: 5px 5px 5px gray;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.custom-modal span {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -15px;
+    cursor: pointer;
+}
+
+pre {
+    font-family: fantasy;
+    font-size: 1.1em;
+    margin: 0 auto;
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.vid-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 75px;
+    margin-top: 75px;
+}
+
+.more {
+    margin-top: 75px;
+    margin-bottom: 50px;
+    width: 110%;
+}
+
+.covers {
+    text-align: center;
+}
+
+.more h1 {
+    font-family: fantasy;
+}
+.more img{
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    margin-right: 40px;
+}
+
+.more img:hover {
+    transition: 0.7s;
+    transform: scale(1.05);
+}
+
+.footer{
+    background-color: #1c2120;
+    color: #FBFBFB;
+    height: 160px;
+    width: 100%;
+    position: relative;
+}
+
+.footer .footer-content{
+    height: 100%;
+}
+
+.footer .logo {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.footer .logo a{
+    color: #FBFBFB;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+    margin: auto;
+    font-size: 3em;
+    font-family: fantasy;
+}
+
+.footer .social {
+    text-align: center;
+}
+
+.fa {
+    padding: 5px;
+    font-size: 15px;
+    width: 25px;
+    text-align: center;
+    text-decoration: none;
+    margin: 7px 7px;
+}
+
+.fa:hover {
+    color: #C5B358;
+    text-decoration: none;
+}
+
+.fa-facebook {
+    background: white;
+    color: black;
+}
+
+.fa-twitter {
+    background: white;
+    color: black;
+}
+
+.fa-youtube {
+    background: white;
+    color: black;
+}
+
+.fa-instagram {
+    background: white;
+    color: black;
+}
+
+.footer .streaming img{
+    padding: 5px;
+    font-size: 15px;
+    width: 25px;
+    text-align: center;
+    text-decoration: none;
+    margin: 7px 2px;
+}
+
+.footer .streaming{
+    width: auto;
+    margin-top: 2px;
+    position: relative;
+    text-align: center;
+}
+
+.footer .streaming img{
+    padding: 1px;
+    width: 25px;
+    text-align: center;
+    text-decoration: none;
+    margin: 6px 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 0;
+        width: auto;
+        text-align: center;
+    }
+
+    .container-ish {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .container-ish p{
+        width: 80%;
+        margin: auto;
+        font-family: fantasy;
+        font-size: 0.8em;
+        margin-top: 20px;
+    }
+
+    .record #under {
+        padding-left: 0px;
+        width: auto;
+    }
+
+    .record {
+        left: 0px;
+        padding-top: 50px;
+        padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .record img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+        border: 1px solid gray;
+        box-shadow: 5px 5px 5px grey;
+        margin-bottom: 15px;
+    }
+
+    .record .text h2 {
+        font-size: 1em;
+        padding-bottom: 15px;
+    }
+
+    table {
+        width: 100%;
+        text-align: left;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    .custom-modal {
+        background-color: whitesmoke;
+        width: 80%;
+        height: 85%;
+        margin: 15% auto;
+        padding: 20px 40px;
+        box-shadow: 5px 5px 5px gray;
+        border-radius: 10px;
+        overflow-y: auto;
+    }
+
+    pre {
+        font-family: fantasy;
+        font-size: 0.9em;
+        margin: 0 auto;
+        text-align: left;
+        white-space: pre-wrap;
+    }
+
+    .footer{
+        height: auto;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 0;
+        width: auto;
+        text-align: center;
+    }
+
+    .container-ish {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .note {
+        display: none;
+    }
+
+    .record #under {
+        padding-left: 0px;
+        width: auto;
+    }
+
+    .record {
+        left: 0px;
+        padding-top: 50px;
+        padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .record img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        height: 70%;
+        border: 1px solid gray;
+        box-shadow: 5px 5px 5px grey;
+        margin-bottom: 15px;
+    }
+
+    .links{
+        display: flex;
+        justify-content: center;
+    }
+
+    .links img{
+        all: unset;
+        width: 50px;
+        height: 25px;
+        margin: 10px;
+    }
+
+    table {
+        width: 100%;
+        text-align: left;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    .more {
+        width: 100%;
+    }
+
+    .covers {
+        text-align: center;
+    }
+
+    .more img{
+        width: 280px;
+        height: 280px;
+        margin: 20px;
+        margin-right: 20px;
+    }
+
+    .custom-modal {
+        background-color: whitesmoke;
+        width: 70%;
+        height: 85%;
+        margin: 5% auto;
+        padding: 20px 40px;
+        box-shadow: 5px 5px 5px gray;
+        border-radius: 10px;
+        overflow-y: auto;
+    }
+
+    pre {
+        font-family: fantasy;
+        font-size: 0.9em;
+        margin: 0 auto;
+        text-align: left;
+        white-space: pre-wrap;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    table {
+        width: 110%;
+    }
+
+    .more {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1440px){
+    table {
+        width: 160%;
+    }
+}

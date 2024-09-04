@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Finance.
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in portfolio %}
+      {% if loop.index0 < loop.length%}
+        <tr>
+          <td>{{ portfolio[loop.index0]['symbol'] }}</td>
+          <td>{{ portfolio[loop.index0]['name'] }}</td>
+          <td>{{ portfolio[loop.index0]['shares'] }}</td>
+          <td>{{ portfolio[loop.index0]['price'] | usd}}</td>
+          <td>{{ portfolio[loop.index0]['total'] | usd }}</td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+
+    <tr>
+      <th>CASH</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ cash | usd }}</td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <th>{{ total | usd }}</th>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

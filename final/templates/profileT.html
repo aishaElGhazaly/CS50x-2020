@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<!--
+	Broadcast by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Profile | SleeveNote</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+		<link rel="stylesheet" href="/static/css/style.css">
+		<link rel="icon" href="/static/images/icon.jpg">
+	</head>
+	<body>
+			<div class="navbar">
+				<div class="logo">
+					<a href="/"><img src="/static/images/logo.png" id="logo"></a>
+				</div>
+
+				<div class="navlinks">
+					<a href="/search">Search</a>
+					<a href="/new-releases">New Releases</a>
+					<a href="/profile">Profile</a>
+					<a href="/login">Log In</a>
+					<a href="/logout" title="log out"><i class="fas fa-sign-out-alt"></i></a>
+				</div>
+			</div>
+
+			<!-- One -->
+			<section>
+				<div class="hero" style="background-image:url({{artists[0]['image']}})"></div>
+
+			    <a href="/edit"><button style="float: right; position: relative; right: 40px; height: 2em; line-height: 2em">Edit</button></a>
+			    <div class="records" id="fav" style="clear: both;">
+			        <hr>
+			        <div style="margin-top: 25px; margin-bottom: 25px;">
+			        	{% for record in records %}
+				            <a href="{{record['url']}}" target="_blank"><img src="{{record['artwork']}}" title="{{record['record']}} . {{record['artist']}}"></a>
+				        {% endfor %}
+			        </div>
+			        <hr>
+			    </div>
+			    <div class="Q">
+					<p>What are your favorite records?</p>
+					<form action="/profile" method="post" name="favRec">
+						<div class="Q-form">
+							<input id="1" type="text" placeholder="title" name="title">
+							<input id="2" type="text" placeholder="artist" name="artist">
+							<button type="submit">Submit</button>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<div class="footer">
+	        	<div class="footer-content">
+	            	<p>Made with &#9825; by Ash from Cairo, Egypt.</p>
+	        	</div>
+	    	</div>
+			<!-- Scripts -->
+			<script src="static/js/jquery.min.js"></script>
+			<script src="static/js/jquery.scrolly.min.js"></script>
+			<script src="static/js/skel.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+	</body>
+</html>

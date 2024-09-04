@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<!--
+	Broadcast by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>{{query}} | SleeveNote</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+		<link rel="stylesheet" href="/static/css/style.css">
+		<link rel="icon" href="/static/images/icon.jpg">
+	</head>
+	<body>
+			<div class="navbar">
+				<div class="logo">
+					<a href="/"><img src="/static/images/logo.png" id="logo"></a>
+				</div>
+
+				<div class="navlinks">
+					<a href="/search">Search</a>
+					<a href="/new-releases">New Releases</a>
+					<a href="/profile">Profile</a>
+					<a href="/login">Log In</a>
+					<a href="/logout" title="log out"><i class="fas fa-sign-out-alt"></i></a>
+				</div>
+			</div>
+
+			<!-- One -->
+			<section class="wrapper">
+				<div class="search-res">
+					<h1 class="header">{{query}}</h1>
+					<div class="row">
+						<hr>
+
+						<div class="records" id="tracks">
+							{% set info = [] %}
+
+						    {% if q_type == "track" %}
+        						{% for record in results['tracks']['items'] %}
+        							{% for key, value in record.items() %}
+	        							{% if key == "album" %}
+	        								{% for ky, val in value.items() %}
+        										{% if ky == "images" %}
+	        										{% for k, v in val[1].items() %}
+		        										{% if k == "url" %}
+		        											{{info.append(v) or ""}}
+		        										{% endif %}
+	        										{% endfor %}
+        										{% endif %}
+        									{% endfor %}
+	        							{% endif %}
+
+	        							{% if key == "name" %}
+	        								{{info.append(value) or ""}}
+	        							{% endif %}
+
+	        							{% if key == "id" %}
+	        								{{info.append(value) or ""}}
+	        							{% endif %}
+
+	        							{% if key == "external_urls" %}
+	        								{% for k, v in value.items() %}
+        										{% if k == "spotify" %}
+        											{{info.append(v) or ""}}
+        										{% endif %}
+        									{% endfor %}
+	        							{% endif %}
+
+	        							{% if key == "preview_url" %}
+	        								{{info.append(value) or ""}}
+	        							{% endif %}
+
+	        							{% if key == "artists" %}
+	        								{% for ky, val in value[0].items() %}
+        										{% if ky == "name" %}
+	        										{{info.append(val) or ""}}
+        										{% endif %}
+        									{% endfor %}
+	        							{% endif %}
+        							{% endfor %}
+        						{% endfor %}
+
+								{% for item in range(0, info|length, 6) %}
+									<div class="track">
+										<a href="{{info[item+2]}}" target="_blank"><img src="{{info[item]}}" title="{{info[item+4]}} . {{info[item+1]}}"></a>
+									{% if info[item+5] is none %}
+										<audio controls pointer-events="none" style="opacity:0.5">
+											<source src="{{info[item+5]}}">
+											Your browser does not support the audio element.
+										</audio>
+									{% else %}
+										<audio controls>
+											<source src="{{info[item+5]}}">
+											Your browser does not support the audio element.
+										</audio>
+									{% endif %}
+									</div>
+								{% endfor %}
+
+                            {% endif %}
+
+							{% if q_type == "album" %}
+								{% for record in results['albums']['items'] %}
+									{% for key, value in record.items() %}
+										{% if key == "artists" %}
+											{% for k, v in value[0].items() %}
+												{% if k == "name" %}
+													{{info.append(v) or ""}}
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+
+										{% if key == "name" %}
+											{{info.append(value) or ""}}
+										{% endif %}
+
+										{% if key == "id" %}
+											{{info.append(value) or ""}}
+										{% endif %}
+
+										{% if key == "external_urls" %}
+											{% for k, v in value.items() %}
+												{{info.append(v) or ""}}
+											{% endfor %}
+										{% endif %}
+
+										{% if key == "images" %}
+											{% for k, v in value[1].items() %}
+												{% if k == "url" %}
+													{{info.append(v) or ""}}
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+									{% endfor %}
+								{% endfor %}
+
+        						{% for item in range(0, info|length, 5) %}
+									<a href="{{info[item+1]}}" target="_blank"><img src="{{info[item+3]}}" title="{{info[item]}} . {{info[item + 4]}}"></a>
+								{% endfor %}
+
+                            {% endif %}
+
+                            {% if q_type == "artist" %}
+        						{% for record in results['artists']['items'] %}
+                            		{% set artist = [] %}
+        							{% for key, value in record.items() %}
+	        							{% if key == "external_urls" %}
+	        								{% for k, v in value.items() %}
+	        									{% if k == "spotify" %}
+	        										{{artist.append(v) or ""}}
+	        									{% endif %}
+	        								{% endfor %}
+	        							{% endif %}
+
+	        							{% if key == "name" %}
+	        								{{artist.append(value) or ""}}
+	        							{% endif %}
+
+	        							{% if key == "images" %}
+	        								{% for l in value %}
+	        									{% if loop.index0 == 1 %}
+	        										{% for k, v in value[loop.index0].items()%}
+	        											{% if k == "url" %}
+	        												{{artist.append(v) or ""}}
+			        									{% endif %}
+	        										{% endfor %}
+	        									{% endif %}
+	        								{% endfor %}
+	        							{% endif %}
+        							{% endfor %}
+        							{% if artist |length == 2 %}
+        								{{artist.insert(1, '/static/images/black.png') or ""}}
+        							{% endif %}
+
+        							{{info.append(artist) or ""}}
+        						{% endfor %}
+        						{% for item in info %}
+        							{% for artist in range(0, item | length, 3 ) %}
+        								<a href="{{item[artist]}}" target="_blank"><img src="{{item[artist+1]}}" title="{{item[artist+2]}}"></a>
+        							{% endfor %}
+								{% endfor %}
+                            {% endif %}
+						</div>
+						<hr>
+					</div>
+				</div>
+			</section>
+
+			<div class="footer">
+	        	<div class="footer-content">
+	            	<p>Made with &#9825; by Ash from Cairo, Egypt.</p>
+	        	</div>
+	    	</div>
+
+			<!-- Scripts -->
+			<script src="static/js/jquery.min.js"></script>
+			<script src="static/js/jquery.scrolly.min.js"></script>
+			<script src="static/js/skel.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+			<script>
+				document.addEventListener('play', function(e){
+				    var audios = document.getElementsByTagName('audio');
+				    for(var i = 0, len = audios.length; i < len;i++){
+				        if(audios[i] != e.target){
+				            audios[i].pause();
+				        }
+				    }
+				},true);
+			</script>
+	</body>
+</html>

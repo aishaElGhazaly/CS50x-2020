@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<!--
+	Broadcast by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>New Releases | SleeveNote</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+		<link rel="stylesheet" href="/static/css/style.css">
+		<link rel="icon" href="/static/images/icon.jpg">
+	</head>
+	<body>
+			<div class="navbar">
+				<div class="logo">
+					<a href="/"><img src="/static/images/logo.png" id="logo"></a>
+				</div>
+
+				<div class="navlinks">
+					<a href="/search">Search</a>
+					<a href="/new-releases">New Releases</a>
+					<a href="/profile">Profile</a>
+					<a href="/login">Log In</a>
+					<a href="/logout" title="log out"><i class="fas fa-sign-out-alt"></i></a>
+				</div>
+			</div>
+
+			<!-- One -->
+			<section class="wrapper">
+				<div class="new-releases">
+					<h1 class="header">NEW RELEASES</h1>
+					<form action="/new-releases" method="post" id="country">
+						<select onchange="country.submit()" name="sym">
+							<option value="" disabled selected>Country</option>
+							{% for country in countries %}
+								<option value="{{country}}">{{country}}</option>
+							{% endfor %}
+						</select>
+					</form>
+
+					<div class="row">
+						<hr id="top">
+			            <div class="records">
+			            	{% set info = [] %}
+
+				            {% for record in releases['albums']['items'] %}
+				                {% for key, value in record.items() %}
+				                    {% if key == "name" %}
+				                    	{{ info.append(value) or ""}}
+				                    {% endif %}
+
+				                    {% if key == "album_type" %}
+				                    	{{ info.append(value) or ""}}
+				                    {% endif %}
+
+				                    {% if key == "artists" %}
+				                        {% for k, v in value[0].items() %}
+				                            {% if k == "name" %}
+				                            	{{ info.append(v) or ""}}
+				                            {% endif %}
+				                        {% endfor %}
+				                    {% endif %}
+
+				                    {% if key == "external_urls" %}
+				                    	{% for k, v in value.items() %}
+				                    		{% if k == "spotify" %}
+				                    			{{ info.append(v) or ""}}
+				                    		{% endif %}
+				                    	{% endfor %}
+				                    {% endif %}
+
+				                    {% if key == "images" %}
+				                        {% for k, v in value[1].items() %}
+				                            {% if k == "url" %}
+				                            	{{ info.append(v) or "" }}
+				                            {% endif %}
+				                        {% endfor %}
+				                    {% endif %}
+				                {% endfor %}
+				            {% endfor %}
+
+
+							{% for item in range(0, info|length, 5) %}
+								<a href="{{info[item+2]}}" target="_blank"><img src="{{info[item+3]}}" title="{{info[item+4]}} . {{info[item+1]}} . {{info[item]}}"></a>
+							{% endfor %}
+			            </div>
+			            <hr>
+        			</div>
+				</div>
+			</section>
+
+			<div class="footer">
+	        	<div class="footer-content">
+	            	<p>Made with &#9825; by Ash from Cairo, Egypt.</p>
+	        	</div>
+	    	</div>
+
+			<!-- Scripts -->
+			<script src="static/js/jquery.min.js"></script>
+			<script src="static/js/jquery.scrolly.min.js"></script>
+			<script src="static/js/skel.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+	</body>
+</html>

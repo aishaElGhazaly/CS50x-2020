@@ -1,0 +1,177 @@
+@viewport {
+    width: device-width ;
+    zoom: 1.0 ;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+    background-color: #fdfcfa;
+}
+
+.body-container {
+    min-height: 100%;
+}
+
+.navbar{
+    height: auto;
+    width: auto;
+    background-color: #1c2120;
+}
+
+.navbar a{
+    color: #FBFBFB;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+    margin: auto;
+    font-size: 3.5em;
+    font-family: fantasy;
+    text-align: center;
+}
+
+.kendrick {
+    background-image: url("images/kendrick!.jpg");
+    width: auto;
+    height: 640px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+.footer{
+    background-color: #1c2120;
+    color: #FBFBFB;
+    height: 160px;
+    width: 100%;
+    position: relative;
+}
+
+.footer .footer-content{
+    height: 100%;
+}
+
+.footer .logo {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.footer .logo a{
+    color: #FBFBFB;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+    margin: auto;
+    font-size: 3em;
+    font-family: fantasy;
+}
+
+.footer .social {
+    text-align: center;
+}
+
+.fa {
+    padding: 5px;
+    font-size: 15px;
+    width: 25px;
+    text-align: center;
+    text-decoration: none;
+    margin: 7px 7px;
+}
+
+.fa:hover {
+    color: #C5B358;
+    text-decoration: none;
+}
+
+.fa-facebook {
+    background: white;
+    color: black;
+}
+
+.fa-twitter {
+    background: white;
+    color: black;
+}
+
+.fa-youtube {
+    background: white;
+    color: black;
+}
+
+.fa-instagram {
+    background: white;
+    color: black;
+}
+
+.footer .streaming img{
+    padding: 5px;
+    font-size: 15px;
+    width: 25px;
+    text-align: center;
+    text-decoration: none;
+    margin: 7px 2px;
+}
+
+.footer .streaming{
+    width: auto;
+    margin-top: 2px;
+    position: relative;
+    text-align: center;
+}
+
+.footer .streaming img{
+    padding: 1px;
+    width: 25px;
+    text-align: center;
+    text-decoration: none;
+    margin: 6px 5px;
+}
+
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3em;
+    font-family: fantasy;
+    padding: 50px;
+}
+
+.records {
+    text-align: center;
+}
+
+.records img{
+    width: 350px;
+    height: 350px;
+    padding: 20px;
+}
+
+.records img:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.videos {
+    text-align: center;
+    padding-bottom: 75px;
+}
+
+.vid-container {
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+@media only screen and (max-width: 350px) {
+    .records img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .footer {
+        height: auto;
+    }
+}
